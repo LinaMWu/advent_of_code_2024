@@ -1,6 +1,20 @@
 # Day 1
 https://adventofcode.com/2024/day/1
 
+To run, use:
+```
+go run .
+```
+
+To provide an input file, use the `input` flag:
+```
+go run . --input input/puzzle_input.txt
+```
+Otherwise, it uses `input/test_input.txt` as default.
+
+
+# Puzzle Description
+
 ## Part 1
 
 Throughout the Chief's office, the historically significant locations are listed not by name but by a unique number called the location ID. To make sure they don't miss anything, The Historians split into two groups, each searching the office and trying to create their own complete list of location IDs.
@@ -32,7 +46,7 @@ To find the total distance between the left list and the right list, add up the 
 
 Your actual left and right lists contain many location IDs. What is the total distance between your lists?
 
-## Part Two
+## Part 2
 Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
 
 Or are they?
