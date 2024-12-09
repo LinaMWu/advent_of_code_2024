@@ -31,45 +31,45 @@ func main() {
 	defer file.Close()
 
 	var (
+		allLines string
 		sumPart1 int64
 		sumPart2 int64
 	)
 
-	// Read input file line by line
+	// Combine all lines from input file into one string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		line := scanner.Text()
+		allLines += scanner.Text()
+	}
 
-		tmpLogger := logger.With(
-			slog.String("line read", line),
-		)
+	// Part 1
+	sumPart1, err = calculateSum(allLines)
+	if err != nil {
+		logger.Error("failed to calculate sum for part 1", "error", err)
+		os.Exit(1)
+	}
 
-		subSum, err := calculateSum(line)
+	// Part 2
+	// Split entire file by "do()" into sub strings
+	subStrings := strings.Split(allLines, "do()")
+	for _, subString := range subStrings {
+		// Split each sub string by "don't()" into further sub strings
+		subSubStrings := strings.Split(subString, "don't()")
+		// Only need to calculate sum for the first portion of sub string that does not follow "don't()"
+		subSum, err := calculateSum(subSubStrings[0])
 		if err != nil {
-			tmpLogger.Error("failed to calculate sub sum", "error", err)
+			logger.Error("failed to calculate sub sum for part 2", "error", err, "sub sub string", subSubStrings[0])
 			os.Exit(1)
 		}
 
-		sumPart1 += subSum
-
-		subStrings := strings.Split(line, "do()")
-		for _, subString := range subStrings {
-			subSubStrings := strings.Split(subString, "don't()")
-			subsubSum, err := calculateSum(subSubStrings[0])
-			if err != nil {
-				tmpLogger.Error("failed to calculate sub sub sum", "error", err, "sub sub string", subSubStrings[0])
-				os.Exit(1)
-			}
-
-			sumPart2 += subsubSum
-		}
+		sumPart2 += subSum
 	}
 
 	// Part 1 Solution
 	logger.Info("result #1 is ready!", "sum part 1", sumPart1)
 
 	// Part 2 Solution
-	logger.Info("result #2 is ready!", "sum part 2", sumPart2) // incorrect
+	logger.Info("result #2 is ready!", "sum part 2", sumPart2)
 }
 
 func calculateSum(line string) (int64, error) {
