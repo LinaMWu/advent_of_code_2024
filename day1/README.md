@@ -46,6 +46,8 @@ To find the total distance between the left list and the right list, add up the 
 
 Your actual left and right lists contain many location IDs. What is the total distance between your lists?
 
+Your puzzle answer was 2196996.
+
 ## Part 2
 Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
 
@@ -75,3 +77,5 @@ For these example lists, here is the process of finding the similarity score:
 So, for these example lists, the similarity score at the end of this process is 31 (9 + 4 + 0 + 0 + 9 + 9).
 
 Once again consider your left and right lists. What is their similarity score?
+
+Your puzzle answer was 23655822.
