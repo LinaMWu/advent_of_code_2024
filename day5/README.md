@@ -77,11 +77,9 @@ Because the first update does not include some page numbers, the ordering rules 
 
 The second and third updates are also in the correct order according to the rules. Like the first update, they also do not include every page number, and so only some of the ordering rules apply - within each update, the ordering rules that involve missing page numbers are not used.
 
-The fourth update, `75,97,47,61,53`, is not in the correct order: it would print `75` before `97`, which violates the rule `97|75`.
-
-The fifth update, `61,13,29`, is also not in the correct order, since it breaks the rule `29|13`.
-
-The last update, `97,13,75,29,47`, is not in the correct order due to breaking several rules.
+* The fourth update, `75,97,47,61,53`, is not in the correct order: it would print `75` before `97`, which violates the rule `97|75`.
+* The fifth update, `61,13,29`, is also not in the correct order, since it breaks the rule `29|13`.
+* The last update, `97,13,75,29,47`, is not in the correct order due to breaking several rules.
 
 For some reason, the Elves also need to know the middle page number of each update being printed. Because you are currently only printing the correctly-ordered updates, you will need to find the middle page number of each correctly-ordered update. In the above example, the correctly-ordered updates are:
 ```
@@ -105,7 +103,7 @@ For each of the incorrectly-ordered updates, use the page ordering rules to put 
 * `75,97,47,61,53` becomes `97,75,47,61,53`.
 * `61,13,29` becomes `61,29,13`.
 * `97,13,75,29,47` becomes `97,75,47,29,13`.
-* 
+
 After taking only the incorrectly-ordered updates and ordering them correctly, their middle page numbers are `47`, `29`, and `47`. Adding these together produces `123`.
 
 Find the updates which are not in the correct order. What do you get if you add up the middle page numbers after correctly ordering just those updates?
