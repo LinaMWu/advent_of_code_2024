@@ -6,8 +6,6 @@ import (
 	"log/slog"
 	"os"
 	"strconv"
-
-	"go.openly.dev/errors"
 )
 
 func main() {
@@ -154,7 +152,7 @@ func checkSum(fileSystem []string) (int, error) {
 		if fileSystem[i] != "." {
 			id, err := strconv.Atoi(fileSystem[i])
 			if err != nil {
-				return 0, errors.Wrapf(err, "failed to convert file id #%d (%s) from string to integer", i, fileSystem[i])
+				return 0, err
 			}
 
 			result += i * id
